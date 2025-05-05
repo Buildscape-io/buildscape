@@ -28,16 +28,20 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
-      - name: Setup Pages
+        
+      - name: Set up Pages environment
         uses: actions/configure-pages@v5
-      - name: Upload artifact
+        
+      - name: Upload artifact to GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          # Upload entire repository (if you want specific folders, adjust this path)
+          path: './'  # Adjust path if you want a specific folder to be deployed
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
